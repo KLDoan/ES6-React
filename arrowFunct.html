@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Cách 1: sử dụng Anonymous Function
+        var sum = function (a) {
+            return a + 100;
+        }
+
+        // Cách 2: Sử dụng Arrow function
+        // var sum = (a) => {
+        //     return a + 100;
+        // }
+        console.log(sum(2)); // cộng số đầu tiên mà ở trong console, nếu không có sẽ là NaN
+        // -----------------------------------------------------------------------------------------
+
+
+        // Một tham số, Một câu lệnh
+        var greet = name => console.log("Xin chào " + name + "!");
+        greet("CodeGym"); // Xin chào CodeGym!
+
+        // Nhiều tham số, Một câu lệnh
+        var multiply = (x, y) => x * y;
+        console.log(multiply(6, 9)); // 54
+
+        // Một tham số, Nhiều câu lệnh
+        var checkAge = age => {
+            if (age > 18) {
+                console.log("Học đại học");
+            } else {
+                console.log("Học phổ thông");
+            }
+        }
+        checkAge(21); // Học đại học
+
+        // Nhiều tham số, Nhiều câu lệnh
+        var divide = (x, y) => {
+            if (y !== 0) {
+                return x / y;
+            }
+        }
+        console.log(divide(10, 2)); // 5
+
+        // Không tham số, Một câu lệnh
+        var hello = () => console.log('Xin chào ES6');
+        hello(); // Xin chào ES6!
+
+        // --------------
+
+        // this
+        function Person(fullName, age) {
+            this.fullName = fullName;
+            this.age = age;
+
+            this.getInfo = function () {
+                return () => {
+                    console.log(this.constructor.name); // this đề cập tới đối tượng Person
+                    console.log(`Tôi là ${this.fullName}. ${this.age} tuổi`);
+                };
+            }
+        }
+
+        var p = new Person('Mỹ Linh', 18);
+        var printInfo = p.getInfo();
+        printInfo(); // Tôi là Mỹ Linh. 18 tuổi
+    </script>
+</body>
+
+</html>
